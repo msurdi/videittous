@@ -20,7 +20,9 @@
       </FeatureList>
     </div>
     <div class="mt-12">
-      <a href="#" class="btn">Get started</a>
+      <router-link :to="{ name: 'encode' }" class="btn"
+        >Get started</router-link
+      >
     </div>
   </main>
 </template>

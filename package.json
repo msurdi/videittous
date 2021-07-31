@@ -4,11 +4,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "copy:ffmpeg": "mkdir -p public/ffmpeg && cp -r node_modules/@ffmpeg/core/dist/* public/ffmpeg/",
     "serve": "vite preview"
   },
   "devDependencies": {
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.10.1",
     "@vitejs/plugin-vue": "^1.2.5",
     "@vue/compiler-sfc": "^3.0.5",
+    "@xstate/inspect": "^0.4.1",
+    "@xstate/vue": "^0.8.0",
     "autoprefixer": "^10.3.1",
     "daisyui": "^1.10.0",
     "eslint": "^7.31.0",
@@ -22,8 +27,10 @@
     "prettier": "^2.3.2",
     "tailwindcss": "^2.2.7",
     "vite": "^2.4.3",
+    "vite-plugin-cross-origin-isolation": "^0.1.1",
     "vue": "^3.0.5",
     "vue-feather": "^2.0.0-rc",
-    "vue-router": "^4.0.10"
+    "vue-router": "^4.0.10",
+    "xstate": "^4.23.1"
   }
 }

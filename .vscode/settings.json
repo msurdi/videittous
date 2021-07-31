@@ -4,7 +4,8 @@
     "**/.DS_Store": true,
     "**/dist": true,
     "**/dist-ssr": true,
-    "**/*.local": true
+    "**/*.local": true,
+    "public/ffmpeg": true
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {

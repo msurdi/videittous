@@ -22,6 +22,7 @@
     "build:vite": "vite build",
     "copy:ffmpeg": "mkdir -p public/ffmpeg && cp -r node_modules/@ffmpeg/core/dist/* public/ffmpeg/",
     "serve": "vite preview",
+    "start": "http-server dist -p ${PORT:-8080} -d false --proxy http://localhost:${PORT:-8080}?",
     "deploy": "dotenv run-s deploy:setup deploy:push",
     "deploy:setup": "git remote | grep dokku || git remote add dokku ${DOKKU_USER:-dokku}@${DOKKU_HOST:-example.com}:${DOKKU_APP:-vide}",
     "deploy:push": "git push --force dokku main:master"
@@ -56,5 +57,8 @@
   "engines": {
     "node": "16",
     "npm": "7"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
   }
 }

@@ -20,7 +20,9 @@
       </FeatureList>
     </div>
     <div class="mt-12">
-      <router-link :to="{ name: 'encode' }" class="btn"
+      <router-link
+        :to="{ name: 'encode' }"
+        class="btn bg-green-500 hover:bg-green-400"
         >Get started</router-link
       >
     </div>

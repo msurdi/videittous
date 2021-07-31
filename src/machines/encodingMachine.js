@@ -63,6 +63,7 @@ export default createMachine(
         type: "final",
         data: {
           targetFile: (context) => context.targetFile,
+          success: true,
         },
       },
       failed: {
@@ -70,6 +71,9 @@ export default createMachine(
           type: "ENCODING_STATUS",
           status: "failed",
         })),
+        data: {
+          success: false,
+        },
         type: "final",
       },
     },
@@ -98,7 +102,7 @@ export default createMachine(
 
         ffmpeg.FS("writeFile", "workfile", await fetchFile(context.sourceFile));
 
-        await ffmpeg.run("-t", "1", "-i", "workfile", "tmp.mp4");
+        await ffmpeg.run("-t", "8", "-i", "workfile", "tmp.mp4");
         const data = ffmpeg.FS("readFile", "tmp.mp4");
         return URL.createObjectURL(
           new Blob([data.buffer], { type: "video/mp4" })

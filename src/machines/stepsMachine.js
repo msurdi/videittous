@@ -56,12 +56,19 @@ export default createMachine(
           data: {
             sourceFile: (context) => context.sourceFile,
           },
-          onDone: {
-            target: "download",
-            actions: assign({
-              targetFile: (_, event) => event.data.targetFile,
-            }),
-          },
+          onDone: [
+            {
+              target: "download",
+              cond: (context, event) => event.data.success,
+              actions: assign({
+                targetFile: (_, event) => event.data.targetFile,
+              }),
+            },
+            {
+              target: "failure",
+              cond: (context, event) => !event.data.success,
+            },
+          ],
           onError: {
             target: "failure",
           },

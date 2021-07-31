@@ -1,22 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <main class="flex flex-col items-center mt-12 px-4 max-w-xl mx-auto">
+    <div class="text-6xl font-bold">Videittous</div>
+    <div class="">The easiest way to optimize any video file</div>
+    <div class="text-gray-600 mt-12">
+      <p class="my-6">
+        Videittous allows you to optimize any video you might have so that it
+        can be played anywhere at the minimum size possible.
+      </p>
+      <FeatureList>
+        <FeatureListItem>Easy to use.</FeatureListItem>
+        <FeatureListItem>No ads, no watermarks, no tracking.</FeatureListItem>
+        <FeatureListItem>It's free. </FeatureListItem>
+        <FeatureListItem
+          >The video is never uploaded, all work is done in your browser.
+        </FeatureListItem>
+        <FeatureListItem
+          >Only limited by your own computer power.
+        </FeatureListItem>
+      </FeatureList>
+    </div>
+    <div class="mt-12">
+      <a href="#" class="btn">Get started</a>
+    </div>
+  </main>
 </template>
 
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+<script>
+import FeatureList from "./components/FeatureList.vue";
+import FeatureListItem from "./components/FeatureListItem.vue";
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
+export default {
+  components: {
+    FeatureList,
+    FeatureListItem,
+  },
+  setup() {},
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -9,10 +9,13 @@
       </p>
       <FeatureList>
         <FeatureListItem>Easy to use.</FeatureListItem>
-        <FeatureListItem>No ads, no watermarks, no tracking.</FeatureListItem>
+        <FeatureListItem
+          >No ads, no watermarks, we don't save your videos.</FeatureListItem
+        >
         <FeatureListItem>It's free. </FeatureListItem>
         <FeatureListItem
-          >The video is never uploaded, all work is done in your browser.
+          >The video is never uploaded, all the work is performed in your
+          browser.
         </FeatureListItem>
         <FeatureListItem
           >Only limited by your own computer power.

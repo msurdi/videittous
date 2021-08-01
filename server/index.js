@@ -17,14 +17,23 @@ const devMode = process.env.NODE_ENV === "development";
 const app = express();
 
 app.use(morgan("combined"));
-app.use(express.static(STATIC_DIR));
 app.use(
   helmet({
-    contentSecurityPolicy: !devMode,
+    contentSecurityPolicy: devMode
+      ? false
+      : {
+          useDefaults: true,
+          directives: {
+            "script-src": ["'self'", "blob:", "'unsafe-eval'"],
+            "media-src": ["'self'", "blob:"],
+            "default-src": ["'self'", "blob:"],
+          },
+        },
     hsts: !devMode,
   })
 );
 
+app.use(express.static(STATIC_DIR));
 app.get("/status", (req, res) => res.send("ok"));
 
 app.get("*", (req, res) => {

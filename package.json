@@ -36,6 +36,7 @@
     "@xstate/vue": "^0.8.0",
     "autoprefixer": "^10.3.1",
     "daisyui": "^1.10.0",
+    "dotenv": "^10.0.0",
     "dotenv-cli": "^4.0.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -59,7 +60,6 @@
     "npm": "7"
   },
   "dependencies": {
-    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "helmet": "^4.6.0",

@@ -25,6 +25,8 @@ app.use(
   })
 );
 
+app.get("/status", (req, res) => res.send("ok"));
+
 app.get("*", (req, res) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");

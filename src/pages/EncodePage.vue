@@ -79,6 +79,7 @@
 import { useMachine } from "@xstate/vue";
 import stepsMachine from "../machines/stepsMachine";
 import EncodingStep from "../components/EncodingStep.vue";
+import debug from "../machines/debug";
 
 export default {
   components: {
@@ -88,10 +89,7 @@ export default {
     const { state, send, service } = useMachine(stepsMachine, {
       devTools: true,
     });
-    service.subscribe((s) => {
-      // eslint-disable-next-line no-console
-      console.log(s);
-    });
+    debug(service);
     return { state, send };
   },
 };

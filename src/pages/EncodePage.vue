@@ -54,9 +54,9 @@
     <EncodingStep v-if="state.matches('download')" class="flex flex-col">
       <video controls :src="state.context.targetFile" class="my-4"></video>
       <div class="flex justify-between items-end">
-        <router-link class="link" :to="{ name: 'encode' }"
-          >Optimize another video</router-link
-        >
+        <button class="link" :to="{ name: 'encode' }" @click="send('RESTART')">
+          Optimize another video
+        </button>
         <a
           class="btn btn-success"
           :href="state.context.targetFile"

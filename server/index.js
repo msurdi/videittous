@@ -3,9 +3,6 @@ const express = require("express");
 const path = require("path");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 const PORT = process.env.PORT ?? 8080;
 const ADDRESS = process.env.ADDRESS ?? "0.0.0.0";

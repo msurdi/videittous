@@ -1,6 +1,6 @@
 <template>
   <main class="flex flex-col items-center my-5 px-4 max-w-xl mx-auto">
-    <div class="text-6xl font-bold">Videittous</div>
+    <div class="text-6xl font-bold tracking-wide">Videittous</div>
     <div class="text-base my-5">
       <p class="my-5">Convert any video in a small, widely compatible MP4.</p>
     </div>

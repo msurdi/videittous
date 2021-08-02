@@ -16,6 +16,8 @@ const app = express();
 app.use(morgan("combined"));
 app.use(
   helmet({
+    crossOriginEmbedderPolicy: true,
+    crossOriginOpenerPolicy: true,
     contentSecurityPolicy: devMode
       ? false
       : {
@@ -34,8 +36,6 @@ app.use(express.static(STATIC_DIR));
 app.get("/status", (req, res) => res.send("ok"));
 
 app.get("*", (req, res) => {
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
   res.sendFile(INDEX_FILE);
 });
 

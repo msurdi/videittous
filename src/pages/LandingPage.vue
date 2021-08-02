@@ -2,7 +2,7 @@
   <main class="flex flex-col items-center mt-12 px-4 max-w-xl mx-auto">
     <div class="text-6xl font-bold">Videittous</div>
     <div class="">The easiest way to optimize any video file</div>
-    <div class="text-gray-600 mt-12">
+    <div class="text-base mt-12">
       <p class="my-6">
         Videittous allows you to optimize any video you might have so that it
         can be played anywhere at the minimum size possible.
@@ -18,7 +18,7 @@
           browser.
         </FeatureListItem>
         <FeatureListItem
-          >Only limited by your own computer power.
+          >Only limited by your own computer's power.
         </FeatureListItem>
       </FeatureList>
     </div>

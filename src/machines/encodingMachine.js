@@ -1,6 +1,11 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { assign, createMachine, sendParent } from "xstate";
 
+const ffmpegArgs =
+  "-i workfile -preset fast -movflags +faststart -max_muxing_queue_size 2048 -maxrate 6M -crf 19 tmp.mp4".split(
+    " "
+  );
+
 export default createMachine(
   {
     id: "encoding",
@@ -102,7 +107,7 @@ export default createMachine(
 
         ffmpeg.FS("writeFile", "workfile", await fetchFile(context.sourceFile));
 
-        await ffmpeg.run("-i", "workfile", "tmp.mp4");
+        await ffmpeg.run(...ffmpegArgs);
         const data = ffmpeg.FS("readFile", "tmp.mp4");
         return URL.createObjectURL(
           new Blob([data.buffer], { type: "video/mp4" })

@@ -6,7 +6,7 @@
     >
       <div v-if="state.matches('initial')">
         <label class="btn btn-success"
-          >Click here to select video to optimize
+          >Pick video...
           <input
             type="file"
             class="hidden"

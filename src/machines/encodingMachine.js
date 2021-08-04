@@ -26,8 +26,9 @@ export default createMachine(
               ffmpeg: (_, event) => event.data,
             }),
           },
-          // TODO: Handle ffmpeg loading errors
-          onError: {},
+          onError: {
+            target: "failed",
+          },
         },
       },
       running: {
@@ -39,7 +40,6 @@ export default createMachine(
               targetFile: (_, event) => event.data,
             }),
           },
-          // TODO: Handle ffmpeg encoding errors
           onError: {
             target: "failed",
           },

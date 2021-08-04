@@ -1,5 +1,5 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
-import { assign, createMachine, sendParent } from "xstate";
+import { assign, createMachine } from "xstate";
 
 const ffmpegArgs =
   "-i workfile -preset fast -movflags +faststart -max_muxing_queue_size 2048 -maxrate 6M -crf 19 tmp.mp4".split(
@@ -11,16 +11,13 @@ export default createMachine(
     id: "encoding",
     initial: "preparing",
     context: {
+      progress: 0,
       ffmpeg: null,
       sourceFile: null,
       targetFile: null,
     },
     states: {
       preparing: {
-        entry: sendParent(() => ({
-          type: "ENCODING_STATUS",
-          status: "preparing",
-        })),
         invoke: {
           src: "loadFFMpeg",
           onDone: {
@@ -34,10 +31,6 @@ export default createMachine(
         },
       },
       running: {
-        entry: sendParent(() => ({
-          type: "ENCODING_STATUS",
-          status: "running",
-        })),
         invoke: {
           src: "encodeFile",
           onDone: {
@@ -53,18 +46,13 @@ export default createMachine(
         },
         on: {
           UPDATE_RATIO: {
-            actions: sendParent((context, event) => ({
-              type: "ENCODING_PROGRESS",
+            actions: assign((context, event) => ({
               progress: Math.trunc(event.ratio * 100),
             })),
           },
         },
       },
       completed: {
-        entry: sendParent(() => ({
-          type: "ENCODING_STATUS",
-          status: "completed",
-        })),
         type: "final",
         data: {
           targetFile: (context) => context.targetFile,
@@ -72,10 +60,6 @@ export default createMachine(
         },
       },
       failed: {
-        entry: sendParent(() => ({
-          type: "ENCODING_STATUS",
-          status: "failed",
-        })),
         data: {
           success: false,
         },

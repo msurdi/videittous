@@ -4,8 +4,6 @@ import encodingMachine from "./encodingMachine";
 const initialContext = {
   sourceFile: null,
   targetFile: null,
-  encodingStatus: null,
-  encodingProgress: 0,
 };
 
 export default createMachine(
@@ -38,18 +36,6 @@ export default createMachine(
         },
       },
       encoding: {
-        on: {
-          ENCODING_STATUS: {
-            actions: assign({
-              encodingStatus: (_, event) => event.status,
-            }),
-          },
-          ENCODING_PROGRESS: {
-            actions: assign({
-              encodingProgress: (_, event) => event.progress,
-            }),
-          },
-        },
         invoke: {
           id: "encoding",
           src: encodingMachine,

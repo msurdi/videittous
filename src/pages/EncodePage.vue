@@ -37,19 +37,10 @@
       v-if="state.matches('encoding')"
       class="flex flex-col items-center w-full"
     >
-      <div>
-        {{ state.context.encodingStatus }}
-        <span v-if="state.context.encodingStatus === 'running'">
-          {{ state.context.encodingProgress }}%
-        </span>
-      </div>
-      <div class="w-full">
-        <progress
-          class="progress progress-success"
-          :value="state.context.encodingProgress"
-          max="100"
-        ></progress>
-      </div>
+      <EncodingProgress
+        v-if="state.children.encoding"
+        :service="state.children.encoding"
+      />
     </EncodingStep>
     <EncodingStep v-if="state.matches('download')" class="flex flex-col">
       <video controls :src="state.context.targetFile" class="my-4"></video>
@@ -80,10 +71,12 @@ import { useMachine } from "@xstate/vue";
 import stepsMachine from "../machines/stepsMachine";
 import EncodingStep from "../components/EncodingStep.vue";
 import debug from "../machines/debug";
+import EncodingProgress from "../components/EncodingProgress.vue";
 
 export default {
   components: {
     EncodingStep,
+    EncodingProgress,
   },
   setup() {
     const { state, send, service } = useMachine(stepsMachine, {

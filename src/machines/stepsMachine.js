@@ -66,7 +66,6 @@ export default createMachine(
             },
             {
               target: "failure",
-              cond: (context, event) => !event.data.success,
             },
           ],
           onError: {
